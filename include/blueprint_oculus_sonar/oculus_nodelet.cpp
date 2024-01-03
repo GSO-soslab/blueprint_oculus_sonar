@@ -1,17 +1,13 @@
 
 #include <boost/asio.hpp>
 
-
 #include "liboculus/Constants.h"
 #include "liboculus/SonarConfiguration.h"
 
 #include "blueprint_oculus_sonar/oculus_ping_conversion.h"
 #include "blueprint_oculus_sonar/oculus_nodelet.h"
 #include "blueprint_oculus_sonar/oculus_interface.h"
-
 #include <blueprint_oculus_sonar/RawData.h>
-
-// #include <marine_acoustic_msgs/ProjectedSonarImage.h>
 
 namespace blueprint_oculus_sonar{
 

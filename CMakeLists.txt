@@ -4,11 +4,11 @@ project(blueprint_oculus_sonar)
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++14)
 
-SET(OpenCV_DIR /home/lin/develop/3rd/opencv/install/opencv-4.2.0/lib/cmake/opencv4/)
+# SET(OpenCV_DIR /home/lin/develop/3rd/opencv/install/opencv-4.2.0/lib/cmake/opencv4/)
 find_package(OpenCV 4.2.0 REQUIRED)
 
 # Standard dependencies
-SET(cv_bridge_DIR /home/lin/develop/ros/ros_ws/devel/share/cv_bridge/cmake/)
+# SET(cv_bridge_DIR /home/lin/develop/ros/ros_ws/devel/share/cv_bridge/cmake/)
 find_package(catkin REQUIRED COMPONENTS
   cmake_modules
   dynamic_reconfigure
