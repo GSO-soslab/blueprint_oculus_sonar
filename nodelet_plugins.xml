@@ -1,0 +1,7 @@
+<library path="lib/liboculus_sonar_nodelet">
+   <class name="blueprint_oculus/driver" type="blueprint_oculus_sonar::OculusDriverRos1" base_class_type="nodelet::Nodelet">
+    <description>
+      A nodelet driver for Oculus sonar.
+    </description>
+  </class>
+</library>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>blueprint_oculus_sonar</name>
+  <version>0.0.1</version>
+  <description>ROS Package to interface with a Blueprint Subsea Oculus imaging sonar</description>
+
+  <maintainer email="linzhao@uri.edu">Lin Zhao</maintainer>
+  <license>BSD
+  </license>
+
+  <!-- ROS build reqs -->
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <depend>message_generation</depend>
+  <depend>sensor_msgs</depend>
+
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+  <depend>cv_bridge</depend>
+  <depend>g3log_ros</depend>
+  <depend>image_transport</depend>
+  <depend>liboculus</depend>
+  <depend>nodelet</depend>
+  <depend>nodelet_topic_tools</depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+
+  <export>
+    <nodelet plugin="${prefix}/nodelet_plugins.xml" />
+  </export>
+
+</package>

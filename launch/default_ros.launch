@@ -1,0 +1,40 @@
+
+<launch>
+  <arg name="range" default="2"/>
+  <arg name="gain_percent" default="100"/>
+  <arg name="gamma" default="127"/>
+  <arg name="ping_rate" default="0"/>
+  <arg name="freq_mode" default="2"/>
+  <arg name="ip_address" default="auto"/>
+  <arg name="send_gain" default="true"/>
+  <arg name="data_size" default="8bit"/>
+  <arg name="frame_id" default="oculus"/>
+
+  <arg name="root" default="oculus" />
+  <arg name="manager" default="/$(arg root)/nodelet_manager" />
+
+  <!--  launch-prefix="gdb -ex run args" -->
+  <group ns="$(arg root)">
+    <node pkg="nodelet" type="nodelet" name="nodelet_manager"  args="manager" output="screen"/>
+
+    <node pkg="nodelet" type="nodelet" name="oculus_sonar_driver"
+          args="load blueprint_oculus/driver $(arg manager)"
+          output="screen">
+
+      <!-- required parameters -->
+      <param name="frame_id" value="$(arg frame_id)"/>
+      <param name="ip_address" value="$(arg ip_address)"/>
+
+      <!-- also settable via dynamic reconfigure -->
+      <param name="range" value="$(arg range)"/>
+      <param name="ping_rate" value="$(arg ping_rate)"/>
+      <param name="gamma" value="$(arg gamma)"/>
+      <param name="gain" value="$(arg gain_percent)"/>
+      <param name="freq_mode" value="$(arg freq_mode)"/>
+      <param name="data_size" value="$(arg data_size)"/>
+      <param name="send_gain" value="$(arg send_gain)"/>
+    </node>
+
+  </group>
+
+</launch>
