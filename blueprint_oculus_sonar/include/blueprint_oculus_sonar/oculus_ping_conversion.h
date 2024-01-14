@@ -196,19 +196,10 @@ void pingToIntensity(
         }
     }
 
+    //! TEST:
     // printf("test8=%d, test16=%d, test32=%d\n", test8, test16, test32);
     // printf("ping datasize=%d\n", ping.dataSize());
 }
-
-
-// double height =  msg_1->range_resolution * msg_1->num_ranges;
-// int rows = msg_1->num_ranges;
-// double width = sin((msg_1->bearings.back() - msg_1->bearings.front()) * M_PI / 18000 / 2.0 ) * height * 2;
-// int cols = ceil(width / msg_1->range_resolution);
-// double res = msg_1->range_resolution;
-// double REVERSE_Z = 1.0;
-
-
 
 template <typename PingT>
 void pingToImageConversion(
@@ -282,7 +273,5 @@ void pingToImageConversion(
     }
 
 }
-
-
 
 } // namespace blueprint_oculus_sonar

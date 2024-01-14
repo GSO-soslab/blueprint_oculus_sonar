@@ -37,13 +37,13 @@ void OculusDriverRos1::onInit() {
     NODELET_DEBUG_STREAM("Advertising topics in namespace " << n_.getNamespace());
     NODELET_DEBUG_STREAM("Private namespace would be:" << pn_.getNamespace());
 
-    sonar_image_pub_ = n_.advertise<sensor_msgs::Image>("image", 10);
-
-    sonar_raw_pub_ = n_.advertise<sensor_msgs::Image>("raw_image", 10);
-
     sonar_info_pub_ = n_.advertise<blueprint_oculus_sonar::OculusInfo>("info", 10);
 
     raw_data_pub_ = n_.advertise<blueprint_oculus_sonar::RawData>("raw_data", 100);
+    
+    sonar_image_pub_ = n_.advertise<sensor_msgs::Image>("image", 10);
+
+    sonar_raw_pub_ = n_.advertise<sensor_msgs::Image>("raw_image", 10);
 
     orientation_pub_ = n_.advertise<geometry_msgs::QuaternionStamped>("orientation", 10);
 
