@@ -39,7 +39,7 @@ generate_messages(
 
 catkin_package(
   INCLUDE_DIRS include
-  CATKIN_DEPENDS liboculus g3log_ros image_transport message_runtime cv_bridge
+  CATKIN_DEPENDS liboculus g3log_ros image_transport message_runtime cv_bridge 
 )
 
 include_directories(
@@ -55,20 +55,29 @@ list(APPEND thirdparty_libraries
 
 add_library(oculus_sonar_nodelet
             include/blueprint_oculus_sonar/oculus_nodelet.cpp)
+
+# Added dependencies for the oculus_sonar_nodelet library
+add_dependencies(oculus_sonar_nodelet
+  ${catkin_EXPORTED_TARGETS}
+  ${PROJECT_NAME}_gencfg
+  ${PROJECT_NAME}_generate_messages_cpp
+)
+
 target_link_libraries(oculus_sonar_nodelet ${thirdparty_libraries})
 class_loader_hide_library_symbols(oculus_sonar_nodelet)
 
 ####
 add_executable(oculus_sonar_driver src/oculus_node.cpp)
 
-target_link_libraries(oculus_sonar_driver
-  ${thirdparty_libraries}
-)
-
+# Moved the add_dependencies for oculus_sonar_driver to be right after its declaration
 add_dependencies(oculus_sonar_driver
   ${catkin_EXPORTED_TARGETS}
   ${PROJECT_NAME}_gencfg
   ${PROJECT_NAME}_generate_messages_cpp
+)
+
+target_link_libraries(oculus_sonar_driver
+  ${thirdparty_libraries}
 )
 
 ####
