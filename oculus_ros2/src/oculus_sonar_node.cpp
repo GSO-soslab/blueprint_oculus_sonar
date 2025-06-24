@@ -42,10 +42,10 @@ OculusSonarNode::OculusSonarNode()
     sonar_viewer_(static_cast<rclcpp::Node*>(this)),
     frame_id_(this->declare_parameter<std::string>("frame_id", "sonar"))
  {
-  this->status_publisher_ = this->create_publisher<oculus_interfaces::msg::OculusStatus>("status", 1);
-  this->ping_publisher_ = this->create_publisher<oculus_interfaces::msg::Ping>("ping", 1);
-  this->temperature_publisher_ = this->create_publisher<sensor_msgs::msg::Temperature>("temperature", 1);
-  this->pressure_publisher_ = this->create_publisher<sensor_msgs::msg::FluidPressure>("pressure", 1);
+  this->status_publisher_ = this->create_publisher<oculus_interfaces::msg::OculusStatus>("oculus/status", 1);
+  this->ping_publisher_ = this->create_publisher<oculus_interfaces::msg::Ping>("oculus/ping", 1);
+  this->temperature_publisher_ = this->create_publisher<sensor_msgs::msg::Temperature>("oculus/temperature", 1);
+  this->pressure_publisher_ = this->create_publisher<sensor_msgs::msg::FluidPressure>("oculus/pressure", 1);
 
   this->sonar_driver_ = std::make_shared<SonarDriver>(this->io_service_.io_service());
   this->io_service_.start();

@@ -33,7 +33,7 @@
 #include <oculus_ros2/sonar_viewer.hpp>
 
 SonarViewer::SonarViewer(rclcpp::Node* node) : node_(node) {
-  image_publisher_ = node->create_publisher<sensor_msgs::msg::Image>("image", 10);
+  image_publisher_ = node->create_publisher<sensor_msgs::msg::Image>("oculus/image", 10);
 }
 
 SonarViewer::~SonarViewer() {}
