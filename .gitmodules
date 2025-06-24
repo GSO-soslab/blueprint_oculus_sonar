@@ -1,7 +1,0 @@
-[submodule "liboculus"]
-	path = liboculus
-	url = https://github.com/GSO-soslab/liboculus
-	branch = main
-[submodule "g3log_ros"]
-	path = g3log_ros
-	url = https://gitlab.com/apl-ocean-engineering/g3log_ros

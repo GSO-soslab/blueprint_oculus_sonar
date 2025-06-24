@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>oculus_ros2</name>
+  <version>0.0.1</version>
+  <description>ROS 2 nodes for BluePrint subsea Oculus SONAR</description>
+
+  <maintainer email="tony.jacob@uri.edu">Tony Jacob</maintainer>
+
+  <license>BSD3</license>
+
+  <!-- TODO(hugoyvrn, Cleannig in dependency needed) -->
+  <depend> ament_cmake </depend>
+  <depend> rclcpp </depend>
+  <depend> rclpy </depend>
+  <depend> rcl_interfaces </depend>
+  <depend> std_msgs </depend>
+  <depend> sensor_msgs </depend>
+  <depend> oculus_driver </depend>
+  <depend> oculus_interfaces </depend>
+  <depend> cv_bridge </depend>
+  <depend> OpenCV  </depend>
+  <!-- <depend>message_generation</depend> -->
+  <!-- <depend>message_runtime</depend> -->
+  <!-- <depend>Boost</depend> -->
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+
+</package>
