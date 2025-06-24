@@ -47,7 +47,7 @@ ament_target_dependencies(oculus_sonar_node PUBLIC
     cv_bridge
 )
 
-install(DIRECTORY launch cfg DESTINATION share/${PROJECT_NAME})
+install(DIRECTORY launch config DESTINATION share/${PROJECT_NAME})
 install(TARGETS oculus_sonar_node DESTINATION lib/${PROJECT_NAME})
 
 ament_package()

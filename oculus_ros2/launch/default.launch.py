@@ -40,7 +40,7 @@ def generate_launch_description():
     ld = LaunchDescription()
 
     config = os.path.join(
-        get_package_share_directory("oculus_ros2"), "cfg", "default.yaml"
+        get_package_share_directory("oculus_ros2"), "config", "default.yaml"
     )
 
     oculus_sonar_node = Node(
