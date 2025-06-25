@@ -1,6 +1,7 @@
-# Blueprint Oculus Sonar ROS1 driver
+# Blueprint Oculus Sonar ROS1/ROS2 driver
 This driver will be integrated in our ALPHA AUV serials, please check [alpha_core](https://github.com/uri-ocean-robotics/alpha_core/tree/noetic-devel/external)
 for other sensor drivers. This driver publish all ROS standard msg for sonar usage, besides the raw msg which directly publish the information from sonar.
+**Change branches for different ROS versions**
 
 **Standard msg rostopic**
   - Fan-shape image: rostopic("/image"), msg type(sensor_msgs::Image) 
