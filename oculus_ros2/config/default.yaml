@@ -1,4 +1,4 @@
-/**:
+/oculus_sonar:
   ros__parameters:
     frame_id: "sonar" # Frame of reference for the ping messages. Default value is "sonar".
 

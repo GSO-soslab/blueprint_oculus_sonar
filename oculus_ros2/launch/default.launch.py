@@ -48,7 +48,7 @@ def generate_launch_description():
         executable="oculus_sonar_node",
         name="oculus_sonar",
         parameters=[config],
-        # namespace="sonar",
+        # namespace="alpha_rise",
         remappings=[
             ("status", "status"),
             ("ping", "ping"),

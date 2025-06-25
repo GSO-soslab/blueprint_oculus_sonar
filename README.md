@@ -15,7 +15,7 @@ $ git clone https://github.com/GSO-soslab/blueprint_oculus_sonar
 $ cd blueprint_oculus_sonar
 $ git branch jazzy-devel
 $ cd ../..
-$ colcon build --packages-select oculus_interfaces oculus_sonar oculus_ros2
+$ colcon build --packages-select oculus_interfaces oculus_ros2
 ```
 
 ### Launch
