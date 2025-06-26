@@ -217,6 +217,7 @@ void OculusSonarNode::publishPing(const oculus::PingMessage::ConstPtr& ping) {
   // TODO(hugoyvrn, publish bearings)
 
   sonar_viewer_.publishFan(ping, frame_id_);
+  sonar_viewer_.publishRaw(msg, frame_id_);
 }
 
 

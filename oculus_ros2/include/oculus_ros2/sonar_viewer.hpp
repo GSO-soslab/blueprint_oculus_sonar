@@ -66,8 +66,21 @@ public:
       const std::vector<uint8_t>& ping_data,
       const int& master_mode,
       const std_msgs::msg::Header& header) const;
-
+  
+  void publishRaw(const oculus_interfaces::msg::Ping& ros_ping_msg, const std::string& frame_id);
+  void pingToImageConversion(const oculus_interfaces::msg::Ping& ros_ping_msg,
+    int& bearings, int& ranges,
+    cv::Mat& map_bb_x, cv::Mat& map_bb_y,
+    int& img_cols, int& img_rows, 
+    cv::Mat& map_img_x, cv::Mat& map_img_y);
+  void pingToIntensity(
+    const oculus_interfaces::msg::Ping& ros_ping_msg,
+    cv::Mat& intensity);
+  double interpolateBin(const std::vector<double> &bearings, double bearing);
+  
   rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr image_publisher_;
+  rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr raw_image_publisher_;
+
 
 protected:
   const double LOW_FREQUENCY_BEARING_APERTURE_ = 65.;
@@ -76,6 +89,13 @@ protected:
 
 private:
   const rclcpp::Node* node_;
+  cv::Mat map_bb_x_, map_bb_y_;
+
+  cv::Mat map_img_x_, map_img_y_;
+
+  int num_bearings_, num_ranges_;
+
+  int img_cols_, img_rows_;
 };
 
 #endif  // OCULUS_ROS2__SONAR_VIEWER_HPP_

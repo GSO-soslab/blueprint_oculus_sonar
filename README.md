@@ -13,7 +13,7 @@ This ROS2 metapackage was developed and tested using:<br>
 $ cd ~/YOUR_WS/src
 $ git clone https://github.com/GSO-soslab/blueprint_oculus_sonar
 $ cd blueprint_oculus_sonar
-$ git branch jazzy-devel
+$ git checkout jazzy-devel
 $ cd ../..
 $ colcon build --packages-select oculus_interfaces oculus_ros2
 ```
