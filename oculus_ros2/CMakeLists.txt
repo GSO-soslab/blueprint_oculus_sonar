@@ -23,6 +23,7 @@ find_package(rclpy REQUIRED)
 find_package(rcl_interfaces REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
 find_package(oculus_interfaces REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(OpenCV REQUIRED)
@@ -43,6 +44,7 @@ ament_target_dependencies(oculus_sonar_node PUBLIC
     oculus_interfaces
     rcl_interfaces
     sensor_msgs
+    nav_msgs
     OpenCV
     cv_bridge
 )

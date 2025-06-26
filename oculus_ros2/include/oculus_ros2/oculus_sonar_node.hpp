@@ -52,6 +52,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/fluid_pressure.hpp>
 #include <sensor_msgs/msg/temperature.hpp>
+#include <nav_msgs/msg/odometry.hpp>
 
 struct SonarParameters {
   int frequency_mode;
@@ -164,13 +165,19 @@ protected:
 private:
   std::shared_ptr<oculus::SonarDriver> sonar_driver_;
   oculus::AsyncService io_service_;
-  // rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr image_publisher_;
+
   SonarViewer sonar_viewer_;
   const std::string frame_id_;
+  const std::string odom_msg_parent_frame_id_;
+  float fluid_density_;
+  float z_covariance_;
+  float ACCL_GRAVITY = 9.80665;
+
   rclcpp::Publisher<oculus_interfaces::msg::OculusStatus>::SharedPtr status_publisher_{nullptr};
   rclcpp::Publisher<oculus_interfaces::msg::Ping>::SharedPtr ping_publisher_{nullptr};
   rclcpp::Publisher<sensor_msgs::msg::Temperature>::SharedPtr temperature_publisher_{nullptr};
   rclcpp::Publisher<sensor_msgs::msg::FluidPressure>::SharedPtr pressure_publisher_{nullptr};
+  rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr depth_odom_publisher_{nullptr};
 
   rclcpp::node_interfaces::OnSetParametersCallbackHandle::SharedPtr param_cb_{nullptr};
 

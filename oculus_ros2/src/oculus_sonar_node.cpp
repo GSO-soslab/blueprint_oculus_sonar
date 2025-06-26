@@ -40,12 +40,17 @@ OculusSonarNode::OculusSonarNode()
   : Node("oculus_sonar"),
     is_running_(this->declare_parameter<bool>("run",true)),
     sonar_viewer_(static_cast<rclcpp::Node*>(this)),
-    frame_id_(this->declare_parameter<std::string>("frame_id", "sonar"))
+    frame_id_(this->declare_parameter<std::string>("frame_id", "sonar")),
+    odom_msg_parent_frame_id_(this->declare_parameter<std::string>("odom_msg_parent_frame_id", "world")),
+    fluid_density_(this->declare_parameter<float>("fluid_density", 997.0474)),
+    z_covariance_(this->declare_parameter<float>("z_covariance", 0.2))
+
  {
   this->status_publisher_ = this->create_publisher<oculus_interfaces::msg::OculusStatus>("oculus/status", 1);
   this->ping_publisher_ = this->create_publisher<oculus_interfaces::msg::Ping>("oculus/ping", 1);
   this->temperature_publisher_ = this->create_publisher<sensor_msgs::msg::Temperature>("oculus/temperature", 1);
   this->pressure_publisher_ = this->create_publisher<sensor_msgs::msg::FluidPressure>("oculus/pressure", 1);
+  this->depth_odom_publisher_ = this->create_publisher<nav_msgs::msg::Odometry>("oculus/depth/odometry", 1);
 
   this->sonar_driver_ = std::make_shared<SonarDriver>(this->io_service_.io_service());
   this->io_service_.start();
@@ -166,6 +171,17 @@ void OculusSonarNode::publishStatus(const OculusStatusMsg& status) {
   pressure_ros_msg.fluid_pressure = status.pressure;  // Pressure reading in Pascals.
   pressure_ros_msg.variance = 0;  // 0 is interpreted as variance unknown
   this->pressure_publisher_->publish(pressure_ros_msg);
+
+  nav_msgs::msg::Odometry odom_ros_msg;
+  odom_ros_msg.header.frame_id = odom_msg_parent_frame_id_;
+  odom_ros_msg.header.stamp = this->now();
+  odom_ros_msg.child_frame_id = frame_id_;
+  odom_ros_msg.pose.pose.position.x = 0.0;
+  odom_ros_msg.pose.pose.position.y = 0.0;
+  float depth = (status.pressure-101300) / (fluid_density_ * ACCL_GRAVITY); //P = rho*g*h - P0
+  odom_ros_msg.pose.pose.position.z = depth;
+  odom_ros_msg.pose.covariance [14] = z_covariance_;
+  this->depth_odom_publisher_->publish(odom_ros_msg);
 }
 
 void OculusSonarNode::updateRosConfig() {
@@ -214,6 +230,16 @@ void OculusSonarNode::publishPing(const oculus::PingMessage::ConstPtr& ping) {
   pressure_ros_msg.variance = 0;  // 0 is interpreted as variance unknown
   this->pressure_publisher_->publish(pressure_ros_msg);
 
+  nav_msgs::msg::Odometry odom_ros_msg;
+  odom_ros_msg.header.frame_id = odom_msg_parent_frame_id_;
+  odom_ros_msg.header.stamp = this->now();
+  odom_ros_msg.child_frame_id = frame_id_;
+  odom_ros_msg.pose.pose.position.x = 0.0;
+  odom_ros_msg.pose.pose.position.y = 0.0;
+  float depth = (msg.pressure-101300) / (fluid_density_ * ACCL_GRAVITY); //P = rho*g*h - P0
+  odom_ros_msg.pose.pose.position.z = depth;
+  odom_ros_msg.pose.covariance [14] = z_covariance_;
+  this->depth_odom_publisher_->publish(odom_ros_msg);
   // TODO(hugoyvrn, publish bearings)
 
   sonar_viewer_.publishFan(ping, frame_id_);

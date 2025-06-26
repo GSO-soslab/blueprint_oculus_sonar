@@ -1,7 +1,8 @@
 /oculus_sonar:
   ros__parameters:
-    frame_id: "sonar" # Frame of reference for the ping messages. Default value is "sonar".
-
+    frame_id: "alpha_rise/fls" # Frame of reference for the ping messages. Default value is "sonar".
+    odom_msg_parent_frame_id: "alpha_rise/world" # Frame of reference for Odom frame
+    
     frequency_mode: 2 # Sonar beam frequency mode. Default value is 2.
     # 1: Low frequency (1.2MHz, wide aperture).
     # 2: High frequency (2.1MHz, narrow aperture).
@@ -29,3 +30,8 @@
     sound_speed: 0.0 # Sound speed (in m/s, set to 0 for it to be calculated using salinity), min=1400.0, max=1600.0. Default value is 0.0.
     use_salinity: True # Use salinity to calculate sound_speed. Default value is True.
     salinity: 0.0 # Salinity (in parts per thousand (ppt,ppm,g/kg), used to calculate sound speed if needed), min=0.0, max=100. Default value is 0.0.
+
+    # Fluid Density (kg/m^3); fresh: 997.0474; seawater: 1023.6
+    fluid_density: 1023.6
+    # covariance value for depth measurement from pressure sensor
+    z_covariance: 0.2

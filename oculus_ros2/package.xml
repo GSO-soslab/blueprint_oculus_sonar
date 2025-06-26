@@ -15,6 +15,7 @@
   <depend> rcl_interfaces </depend>
   <depend> std_msgs </depend>
   <depend> sensor_msgs </depend>
+  <depend> nav_msgs </depend>
   <depend> oculus_driver </depend>
   <depend> oculus_interfaces </depend>
   <depend> cv_bridge </depend>
