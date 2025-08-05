@@ -8,7 +8,8 @@ This ROS2 metapackage was developed and tested using:<br>
 * Ubuntu 24.04 LTS<br>
 * ROS2 jazzy
 * M750d Sonar
-
+### Dependencies
+`sudo apt-get install libboost-dev libboost-system-dev libboost-thread-dev ros-jazzy-cv-bridge`
 ### Messages
 * Fan Shaped Image : "oculus/image" (sensor_msgs::msg::Image)
 * Bin-Beam Image : "oculus/raw_image" (sensor_msgs::msg:Image)
