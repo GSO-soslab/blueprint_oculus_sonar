@@ -21,7 +21,7 @@
 
     gain_assist: True # Enable gain assist. Default value is True.
 
-    range: 20.0 # Sonar range (in meters), min=0.3, max=40.0.  Default value is 20.0.
+    range: 40.0 # Sonar range (in meters), min=0.3, max=40.0.  Default value is 20.0.
 
     # These parameters are for scaling data (investigate)
     gamma_correction: 153 # Gamma correction, min=0, max=255.  Default value is 153 (60%).
