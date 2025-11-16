@@ -140,6 +140,7 @@ void SonarViewer::publishRaw(const oculus_interfaces::msg::Ping& ros_ping_msg, c
   
   std_msgs::msg::Header header;
   header.frame_id = frame_id;
+  header.stamp = ros_ping_msg.header.stamp;
   const char* ros_image_encoding = sensor_msgs::image_encodings::MONO8;
 
   cv::Mat intensity;

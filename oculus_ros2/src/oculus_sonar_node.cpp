@@ -242,6 +242,7 @@ void OculusSonarNode::publishPing(const oculus::PingMessage::ConstPtr& ping) {
   this->depth_odom_publisher_->publish(odom_ros_msg);
   // TODO(hugoyvrn, publish bearings)
 
+  // ping : OculusMsg. msg : ROS custom msg.
   sonar_viewer_.publishFan(ping, frame_id_);
   sonar_viewer_.publishRaw(msg, frame_id_);
 }
