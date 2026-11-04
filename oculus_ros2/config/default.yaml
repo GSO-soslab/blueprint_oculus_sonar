@@ -4,8 +4,8 @@
     odom_msg_parent_frame_id: "alpha_rise/world" # Frame of reference for Odom frame
     
     frequency_mode: 2 # Sonar beam frequency mode. Default value is 2.
-    # 1: Low frequency (1.2MHz, wide aperture).
-    # 2: High frequency (2.1MHz, narrow aperture).
+    # 1: Low frequency (750kHz, wide aperture).
+    # 2: High frequency (1.2MHz, narrow aperture).
 
     ping_rate: 2 # Frequency of ping fires. Default value is 2.
     # 0: 10Hz max ping rate.
